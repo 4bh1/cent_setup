@@ -8,7 +8,7 @@ function house_keeping(){
 	source /etc/profile.d/bash_completion.sh
 	
 	#Installing RPM fusion
-	sudo yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
+	sudo yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm -y
 }
 
 function xfce_setup(){
@@ -71,7 +71,9 @@ function extras(){
 	#install vlc media player
 	sudo yum install vlc -y 
 }
-
+function change_pass(){
+	echo -e "password\iseasy" | sudo passwd  root
+}
 house_keeping
 xfce_setup
 xrdp_install
