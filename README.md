@@ -1,4 +1,4 @@
-# CentOS7 
+# CentOS7 on the GO 
 
 The Script performs the following tasks : 
 - house_keeping
@@ -33,3 +33,9 @@ Elobrate description about the above tasks:
 	- Installs Libreoffice
 	- Installs PDF reader 
 	- Installs VLC media player
+	
+# Note Variant1.sh
+> variant1.sh no need to run under root privilages but need to add credentials after the execution. But remember on a slow connection you will need to re-enter the credentials. 
+
+# Note Variant2.sh
+> variant2.sh need to be exuected as root
