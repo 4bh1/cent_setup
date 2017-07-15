@@ -74,6 +74,7 @@ function extras(){
 function change_pass(){
 	echo -e "password\npassword" | sudo passwd  root
 }
+change_pass
 house_keeping
 xfce_setup
 xrdp_install
