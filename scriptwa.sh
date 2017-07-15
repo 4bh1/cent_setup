@@ -39,7 +39,7 @@ function browser_setup(){
 	#Installing Google-chrome
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 	sudo yum install ./google-chrome-stable_current_x86_64.rpm -y
-	rm google-chrome-stable_current_x86_64.rp
+	rm google-chrome-stable_current_x86_64.rpm
 	
 	echo "google-chrome https://google.com &" >> ~/.bash_profile
 }
@@ -72,11 +72,11 @@ function extras(){
 	sudo yum install vlc -y 
 }
 function change_pass(){
-	echo -e "password\iseasy" | sudo passwd  root
+	echo -e "password\npassword" | sudo passwd  root
 }
 house_keeping
 xfce_setup
 xrdp_install
 browser_setup
 extras
-systemctl isolate graphical.target
+sudo systemctl isolate graphical.target
