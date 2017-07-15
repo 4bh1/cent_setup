@@ -1,11 +1,11 @@
 # CentOS7 
 
 The Script performs the following tasks : 
-1]house_keeping
-2]xfce_setup
-3]xrdp_install
-4]browser_setup
-5]extras
+- house_keeping
+- xfce_setup
+- xrdp_install
+- browser_setup
+- extras
 
 Elobrate description about the above tasks:
 1) house_keeping :
