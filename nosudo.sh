@@ -1,85 +1,86 @@
-functionhouse_keeping(){
-	#UpdatingSystem
-	yumupdate-y
+function house_keeping(){
+	#Updating System
+	yum update -y
 	
-	#Settingupepelrepoandbashcompletionjustincase
-	yuminstallepel-release-y
-	yuminstallbash-completionbash-completion-extrasnet-toolswget-y
-	source/etc/profile.d/bash_completion.sh
+	#Setting up epel repo and bash completion just in case
+	yum install epel-release -y
+	yum install bash-completion bash-completion-extras net-tools wget -y 
+	source /etc/profile.d/bash_completion.sh
 	
-	#InstallingRPMfusion
-	yumlocalinstall--nogpgcheckhttps://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpmhttps://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm-y
+	#Installing RPM fusion
+	yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm -y
 }
 
-functionxfce_setup(){
+function xfce_setup(){
 	
-	#InstallingXwindowssystem
-	yumgroupinstall"XWindowSystem"-y
+	#Installing Xwindows system 
+	yum groupinstall "X Window System" -y
 	
-	#InstallingandsetingupXFCE
-	yum--enablerepo=epelgroupsinstall"Xfce"-y
-	echo"exec/usr/bin/xfce4-session">>~/.xinitrc
+	#Installing and seting up XFCE 
+	yum --enablerepo=epel groups install "Xfce" -y 
+	echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
 	
-	#ForXRDP
-	echoxfce4-session>$UHOME/.Xclients
-	chmod+x$UHOME/.Xclients
+	#For XRDP 
+	echo xfce4-session > $UHOME/.Xclients
+	chmod +x $UHOME/.Xclients
 	
-	#Settingxfceonboot
-	systemctlset-defaultgraphical.target
+	#Setting xfce on boot
+	 systemctl set-default graphical.target
 	
-	#StartingXFCE
-	#systemctlisolategraphical.target	
+	#Starting XFCE
+	# systemctl isolate graphical.target	
 }
 
-functionbrowser_setup(){
+function browser_setup(){
 	
-	#InstallingfirefoxandChromiumbrowser
-	yuminstallfirefoxchromium-y
+	#Installing firefox and Chromium browser
+	 yum install firefox chromium -y
 	
-	#InstallingGoogle-chrome
-	wget-P$UHOMEhttps://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-	yuminstall$UHOME/google-chrome-stable_current_x86_64.rpm-y
-	rm$UHOME/google-chrome-stable_current_x86_64.rpm
+	#Installing Google-chrome
+	wget -P $UHOME https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+	 yum install $UHOME/google-chrome-stable_current_x86_64.rpm -y
+	rm $UHOME/google-chrome-stable_current_x86_64.rpm
 	
-	echo"google-chromehttps://google.com&">>$UHOME/.bash_profile
+	echo "google-chrome https://google.com &" >> $UHOME/.bash_profile
 }
 
-functionxrdp_install(){
-	#Settinguprepoforxrdp
-	yuminstallxrdpxrdp-selinuxtigervnc-server-y
+function xrdp_install(){
+	#Setting up repo for xrdp 
+	 yum install xrdp xrdp-selinux tigervnc-server -y
 	
-	#OpeningportforxrdpandchangingSELINUXconfig
-	firewall-cmd--permanent--zone=public--add-port=3389/tcp
-	firewall-cmd--reload
-	chcon--type=bin_t/usr/sbin/xrdp
-	chcon--type=bin_t/usr/sbin/xrdp-sesman
+	#Opening port for xrdp and changing SELINUX config
+	 firewall-cmd --permanent --zone=public --add-port=3389/tcp
+	 firewall-cmd --reload
+	 chcon --type=bin_t /usr/sbin/xrdp
+	 chcon --type=bin_t /usr/sbin/xrdp-sesman
 	
-	#StartingXRDP
-	systemctlstartxrdp.service
+	#Starting XRDP
+	 systemctl start xrdp.service
 	
-	#EnablingXRDPonboot
-	systemctlenablexrdp.service
+	#Enabling XRDP on boot
+	 systemctl enable xrdp.service
 }
 
-functionextras(){
-	#installlibreoffice
-	yuminstalllibreoffice-y
+function extras(){
+	#install libre office 
+	 yum install libreoffice -y
 	
-	#installpdfreader
-	yuminstallevince-y
+	#install pdf reader 
+	 yum install evince -y
 	
-	#installvlcmediaplayer
-	yuminstallvlc-y
+	#install vlc media player
+	 yum install vlc -y 
 }
-functionchange_pass(){
-	echo-e"password\npassword"|passwdroot
+function change_pass(){
+	echo -e "password\npassword" |  passwd  root
 }
 
-UHOME=$(evalecho~$SUDO_USER)
+UHOME=$(eval echo ~$SUDO_USER)
 
 house_keeping
 xfce_setup
 xrdp_install
 browser_setup
 extras
-systemctlisolategraphical.target
+ systemctl isolate graphical.target
+
