@@ -72,7 +72,7 @@ function extras(){
 	 yum install vlc -y 
 }
 function change_pass(){
-	echo -e "password\npassword" |  passwd  root
+	echo -e "password\npassword" |  passwd  $SUDO_USER
 }
 
 UHOME=$(eval echo ~$SUDO_USER)
