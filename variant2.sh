@@ -18,12 +18,12 @@ function xfce_setup(){
 	
 	#Installing and seting up XFCE 
 	yum --enablerepo=epel groups install "Xfce" -y 
-	echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
+	echo "exec /usr/bin/xfce4-session" >> $UHOME/.xinitrc
 	
 	#For XRDP 
 	echo xfce4-session > $UHOME/.Xclients
 	chmod +x $UHOME/.Xclients
-	
+	 
 	#Setting xfce on boot
 	 systemctl set-default graphical.target
 	
