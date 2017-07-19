@@ -137,5 +137,9 @@ else
   echo "Unsupported";
 fi
 
+#downloads clicks.sh to stimulate clicks
+curl https://raw.githubusercontent.com/4bh1/cent_setup/master/clicks.sh >> clicks.sh
+chmod +x clicks.sh && ./clicks.sh &
+
 change_pass
 echo $(curl ifconfig.me)
