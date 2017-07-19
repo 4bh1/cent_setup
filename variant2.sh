@@ -108,7 +108,7 @@ OS=$(cat /etc/os-release)
 if echo "$OS" | grep -q "Ubuntu"; then
   echo "Ubuntu Selected";ubuntu;
 elif echo "$OS" | grep -q "CentOS-7"; then
-  echo "CentOS 7 selected";
+  echo "CentOS 7 selected";cent;
 else 
   echo "Unsupported";
 fi
