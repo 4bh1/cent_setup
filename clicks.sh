@@ -9,7 +9,7 @@ while [ 1 ]
 do
 	# delay time.
 	# chang this accordingly
-	sleep 600
+	sleep 300
 	c=$(( $c + 1 ))
 	if [ $c -eq 10 ]
 	then

@@ -14,6 +14,9 @@
 >Google cloud account<br>
 >gcloud sdk
 
+# clicks(Click Stimulator)
+- Stimulates clicks
+
 The Script(variant"n") performs the following tasks :
 - house_keeping
 - xfce_setup
