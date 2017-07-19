@@ -6,11 +6,11 @@
 # Note Variant2.sh
 > variant2.sh need to be exuected as root
 
-#Google cloud integration
+# Google cloud integration
 -The script can completely setup centos/ubuntu with xrdp on your gcloud server on the GO.
 -Execute the script and it will setup ever thing that is needed to be done.
 
-#Requirements
+# Requirements
 >Google cloud account
 >gcloud sdk
 
