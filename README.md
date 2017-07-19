@@ -11,7 +11,7 @@
 -Execute the script and it will setup ever thing that is needed to be done.
 
 # Requirements
->Google cloud account
+>Google cloud account<br>
 >gcloud sdk
 
 The Script(variant"n") performs the following tasks :
