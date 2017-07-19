@@ -112,5 +112,5 @@ elif echo "$OS" | grep -q "CentOS-7"; then
 else 
   echo "Unsupported";
 fi
-
 change_pass
+curl ifconfig.me
