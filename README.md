@@ -6,16 +6,18 @@
 # Note Variant2.sh
 > variant2.sh need to be exuected as root
 
-# Google cloud integration
+# Google cloud integration gs.sh(gcloud setup)
 - The script can completely setup centos/ubuntu with xrdp on your gcloud server on the GO.
 - Execute the script and it will setup ever thing that is needed to be done.
 
 # Requirements
 >Google cloud account<br>
->gcloud sdk
+>gcloud sdk <br>
+>REMBER to change the variable $project_name in gs.sh to your project name
 
 # clicks(Click Stimulator)
-- Stimulates clicks
+- Stimulates clicks after certain intervals
+
 
 The Script(variant"n") performs the following tasks :
 - house_keeping
