@@ -1,11 +1,5 @@
 # CentOS7 on the GO and now Ubuntu
 
-# Note Variant1.sh
-> variant1.sh no need to run under root privilages but need to add credentials after the execution. But remember on a slow connection you will need to re-enter the credentials.
-
-# Note Variant2.sh
-> variant2.sh need to be exuected as root
-
 # Google cloud integration gs.sh(gcloud setup)
 - The script can completely setup centos/ubuntu with xrdp on your gcloud server on the GO.
 - Execute the script and it will setup ever thing that is needed to be done.
@@ -14,6 +8,12 @@
 >Google cloud account<br>
 >gcloud sdk <br>
 >REMBER to change the variable $project_name in gs.sh to your project name
+
+# Note Variant1.sh
+> variant1.sh no need to run under root privilages but need to add credentials after the execution. But remember on a slow connection you will need to re-enter the credentials.
+
+# Note Variant2.sh
+> variant2.sh need to be exuected as root
 
 # clicks(Click Stimulator)
 - Stimulates clicks after certain intervals
