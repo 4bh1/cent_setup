@@ -80,19 +80,19 @@ function cent(){
 }
 function ubuntu(){
 	function xfce(){
-		apt update && apt upgrade -y 
-		apt install xfce4 xrdp -y
+		apt-get update && apt-get upgrade -y 
+		apt-get install xfce4 xrdp -y
 		echo xfce4-session > UHOME	/.xsession
 		echo startxfce4 >> /etc/xrdp/startwm.sh
 		ufw allow 3389/tcp
 		sudo service xrdp restart 
 	}
 	function browser(){
-		apt install firefox chromium-browser -y
-		wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
-		echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-		apt update 
-		apt install google-chrome-stable -y
+		apt-get install firefox chromium-browser -y
+		wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-get-key add - 
+		echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt-get/sources.list.d/google.list
+		apt-get update 
+		apt-get install google-chrome-stable -y
 
 	}
 	xfce

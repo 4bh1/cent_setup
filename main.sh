@@ -10,8 +10,8 @@ image_list=(centos-7-v20170620 ubuntu-1404-trusty-v20170703 ubuntu-1604-xenial-v
 #selecting a random image
 image=$(echo "${image_list[$(shuf -i 0-4 -n 1)]}")
 echo "$image Selected for installation">>logs
- 
-#selecting image project 
+
+#selecting image project
 if echo $image |grep -q "ubuntu"; then
 	project="ubuntu-os-cloud";
 elif echo $image |grep -q "centos-7"; then
@@ -21,15 +21,17 @@ fi
 
 #Genrating random instance name
 inst_name="test"$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 5 | head -n 1)
-echo "$inst_name is the instance name">>logs
+echo "$inst_name is the instance name\n">>logs
 
 gcloud compute --project "nixscripting" instances create $inst_name --zone $zone_name  --machine-type "n1-standard-1" --subnet "default" --maintenance-policy "MIGRATE" --service-account "1016708991201-compute@developer.gserviceaccount.com" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --image $image --image-project $project --boot-disk-size "10" --boot-disk-type "pd-standard" --boot-disk-device-name $inst_name >>logs
 
-sleep 20
-#connects to the server and starts setting up the environment 
-gcloud compute ssh $(echo $inst_name) --command="curl https://raw.githubusercontent.com/4bh1/cent_setup/master/variant2.sh >> variant2.sh ; sudo bash ./variant2.sh"
+#Sometime it wont connect just a 2 minute windows to make sure that every thing goes well
+sleep 2m
+#connects to the server and starts setting up the environment
+gcloud compute ssh $(echo $inst_name) --command="curl https://raw.githubusercontent.com/4bh1/cent_setup/master/variant2.sh >> variant2.sh ; sudo bash ./variant2.sh" --zone $zone_name
 
-#Now this script will sleep for 2hrs and after 2hrs the script will destroy the instance 
-sleep 5
+#Now this script will sleep n amount of time add suffix s,m,h for seconds minutes hours respectively
+sleep 2h
 
+#deleting the instance
 gcloud -q compute instances delete $inst_name  --zone $zone_name
